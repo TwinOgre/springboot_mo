@@ -9,8 +9,8 @@ import lombok.Setter;
 @Setter
 public class ArticleForm {
     @NotEmpty
-    String subject;
+    private String subject;
 
     @NotEmpty
-    String content;
+    private String content;
 }

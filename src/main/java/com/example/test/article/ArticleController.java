@@ -26,12 +26,11 @@ public class ArticleController {
     }
     @GetMapping("/create")
     public String articleCreate(){
-
         return "article_create";
     }
     @PostMapping("/create")
     public String articleCreate(@Valid ArticleForm articleForm ){
-        this.articleService.create(articleForm.subject,articleForm.content);
+        this.articleService.create(articleForm.getSubject(),articleForm.getContent());
         return "redirect:/article/list";
     }
     @GetMapping("/detail/{id}")
