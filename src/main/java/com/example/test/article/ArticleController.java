@@ -26,7 +26,7 @@ public class ArticleController {
         return "article_list";
     }
     @GetMapping("/create")
-    public String articleCreate(){
+    public String articleCreate(ArticleForm articleForm){
         return "article_create";
     }
     @PostMapping("/create")
