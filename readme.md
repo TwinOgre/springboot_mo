@@ -15,22 +15,27 @@
 
 
 ## MVC 패턴
-- Article-Entity
-- ArticleController-@Controller
-- ArticleService-@Service
-- ArticleRepository-@Repository
+- Model, View, Controller
+- Model은 데이터를 담당
+- View는 사용자 인터페이스
+- Controller는 사용자 요청담당
+- 사용자의 요청을 Controller가 받는다.
+- Controller는 Service에서 비즈니스 로직을 처리한 후에 Model에 데이터를 저장.
+- Model에 저장된 데이터를 바탕으로 View를 통해 시각적으로 사용자에게 제공.
 
 ## 스프링에서 의존성 주입(DI) 방법 3가지 방법
 - 생성자 함수에 객체 생성하여 의존성 주입
-- @RequiredArgsConstructor 후 private final 형태로 클래스 변수 생성.
-- 상속
+- @Autowired 애너테이션 사용
+- Setter 메서드 사용
 
 ## JPA의 장점과 단점
-장점: 복잡한 sql 문을 익히지 않고도 데이터베이스를 사용할 수 있다.
+장점: 메서드 호출만으로 쿼리를 수행하여 SQL문을 일일히 적거나 고칠 필요가 없다.
 
-단점: 복잡한 메서드를 익혀야 한다.
+단점: JPA를 사용하기 위해 학습해야 하는 것들이 많다.
 
 ## HTTP GET 요청과 POST 요청의 차이
 GET 요청은 주로 데이터베이스에서 데이터를 출력하는 요청이다.
+GET 요청은 데이터가 외부적으로 보여 중요한 정보를 다뤄서는 안된다.
 
 POST 요청은 주로 데이터베이스에 데이터를 저장하는 요청이다.
+POST 요청은 데이터가 외부적으로 드러나지 않아 보안이 필요한 부분에 사용된다.
