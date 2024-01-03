@@ -20,8 +20,8 @@
 - View는 사용자 인터페이스
 - Controller는 사용자 요청담당
 - 사용자의 요청을 Controller가 받는다.
-- Controller는 Service에서 비즈니스 로직을 처리한 후에 Model에 데이터를 저장.
-- Model에 저장된 데이터를 바탕으로 View를 통해 시각적으로 사용자에게 제공.
+- Controller는 Service에서 비즈니스 로직을 처리한 후에 Model에 데이터를 저장한다.
+- Model에 저장된 데이터를 바탕으로 View를 통해 시각적으로 사용자에게 제공한다.
 
 ## 스프링에서 의존성 주입(DI) 방법 3가지 방법
 - 생성자 함수에 객체 생성하여 의존성 주입
