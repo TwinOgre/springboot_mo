@@ -30,6 +30,7 @@
     <!-- 답변 반복 끝  -->
     <!-- 답변 작성 -->
     <form th:action="@{|/answer/create/${article.id}|}" method="post" class="my-3">
+        <!--  34번 th:field 근처 문제 있음      -->
         <textarea  name="content" sec:authorize="isAnonymous()" disabled th:field="*{content}" class="form-control" rows="10"></textarea>
         <textarea  name="content" sec:authorize="isAuthenticated()" th:field="*{content}" class="form-control" rows="10"></textarea>
 <!--        <textarea name="content" id="content" rows="10" class="form-control"></textarea>-->
