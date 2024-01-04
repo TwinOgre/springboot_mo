@@ -1,6 +1,7 @@
 package com.example.test.article;
 
 import com.example.test.DataNotFoundException;
+import com.example.test.user.SiteUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +14,12 @@ import java.util.Optional;
 public class ArticleService {
     private final ArticleRepsoitory articleRepsoitory;
 
-    public void create(String subject, String content) {
+    public void create(String subject, String content, SiteUser user) {
         Article article = new Article();
         article.setSubject(subject);
         article.setContent(content);
         article.setCreateDate(LocalDateTime.now());
+        article.setAuthor(user);
 
         this.articleRepsoitory.save(article);
     }

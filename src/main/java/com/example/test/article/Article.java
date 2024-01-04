@@ -1,6 +1,7 @@
 package com.example.test.article;
 
 import com.example.test.answer.Answer;
+import com.example.test.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,4 +32,6 @@ public class Article {
     @OneToMany(mappedBy = "article", cascade = CascadeType.REMOVE)
     private List<Answer> answerList;
 
+    @ManyToOne
+    private SiteUser author;
 }
