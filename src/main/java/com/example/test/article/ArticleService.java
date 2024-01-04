@@ -12,6 +12,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ArticleService {
     private final ArticleRepsoitory articleRepsoitory;
+
     public void create(String subject, String content) {
         Article article = new Article();
         article.setSubject(subject);
@@ -24,7 +25,8 @@ public class ArticleService {
     public List<Article> list() {
         return this.articleRepsoitory.findAll();
     }
-    public Article getArticle(Integer id){
+
+    public Article getArticle(Integer id) {
         Optional<Article> article = this.articleRepsoitory.findById(id);
         if (article.isPresent()) {
             return article.get();

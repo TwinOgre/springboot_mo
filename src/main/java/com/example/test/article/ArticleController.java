@@ -20,25 +20,28 @@ public class ArticleController {
     private final ArticleService articleService;
 
     @GetMapping("/list")
-    public String articleList(Model model){
+    public String articleList(Model model) {
         List<Article> aritcleList = this.articleService.list();
         model.addAttribute("articleList", aritcleList);
         return "article_list";
     }
+
     @GetMapping("/create")
-    public String articleCreate(ArticleForm articleForm){
+    public String articleCreate(ArticleForm articleForm) {
         return "article_create";
     }
+
     @PostMapping("/create")
-    public String articleCreate(@Valid ArticleForm articleForm, BindingResult bindingResult){
-        if(bindingResult.hasErrors()){
+    public String articleCreate(@Valid ArticleForm articleForm, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return "article_create";
         }
-        this.articleService.create(articleForm.getSubject(),articleForm.getContent());
+        this.articleService.create(articleForm.getSubject(), articleForm.getContent());
         return "redirect:/article/list";
     }
+
     @GetMapping("/detail/{id}")
-    public String articleDetail(Model model, @PathVariable("id") Integer id){
+    public String articleDetail(Model model, @PathVariable("id") Integer id) {
         Article article = this.articleService.getArticle(id);
         model.addAttribute(article);
         return "article_detail";

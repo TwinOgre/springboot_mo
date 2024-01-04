@@ -1,8 +1,8 @@
-package com.example.test.article;
+package com.example.test.answer;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ArticleRepsoitory extends JpaRepository<Article, Integer> {
+public interface AnswerRepository extends JpaRepository<Answer, Integer> {
 }

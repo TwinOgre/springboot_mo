@@ -14,12 +14,16 @@
                 <td th:text="${loop.count}"></td>
                 <td>
                     <a th:href="@{|/article/detail/${article.id}|}" th:text="${article.subject}"></a>
+                    <span class="text-danger small ms-2"
+                          th:if="${#lists.size(article.answerList) > 0}"
+                          th:text="${#lists.size(article.answerList)}">
+                    </span>
                 </td>
                 <td th:text="${#temporals.format(article.createDate, 'yyyy-MM-dd HH:mm')}"></td>
             </tr>
             </tbody>
         </table>
     </div>
-<a href="/article/create" type="button">Article 등록하기</a>
+    <a href="/article/create" type="button">Article 등록하기</a>
 </div>
 </html>
