@@ -29,6 +29,8 @@ public class Article {
     @CreatedDate
     private LocalDateTime createDate;
 
+    private LocalDateTime modifyDate;
+
     @OneToMany(mappedBy = "article", cascade = CascadeType.REMOVE)
     private List<Answer> answerList;
 
