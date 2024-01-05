@@ -55,4 +55,9 @@ public class ArticleService {
 
         this.articleRepsoitory.save(article);
     }
+
+    public void vote(Article article, SiteUser siteUser) {
+        article.getVoter().add(siteUser);
+        this.articleRepsoitory.save(article);
+    }
 }

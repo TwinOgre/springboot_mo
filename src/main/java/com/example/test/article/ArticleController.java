@@ -79,4 +79,18 @@ public class ArticleController {
         this.articleService.modify(article, articleForm.getSubject(), articleForm.getContent());
         return String.format("redirect:/article/detail/%s", id);
     }
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/delete/{id}")
+    public String articleDelete(){
+
+        return "redirect:/article/list";
+    }
+
+    @GetMapping("/vote/{id}")
+    public String vote(@PathVariable("id") Integer id, Principal principal){
+        Article article = this.articleService.getArticle(id);
+        SiteUser siteUser = this.userService.getUser(principal.getName());
+        this.articleService.vote(article,siteUser);
+        return String.format("redirect:/article/detail/%s", article.getId());
+    }
 }

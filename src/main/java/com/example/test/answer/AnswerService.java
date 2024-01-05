@@ -14,7 +14,7 @@ import java.util.Optional;
 public class AnswerService {
     private final AnswerRepository answerRepository;
 
-    public void create(Article article, String content, SiteUser author) {
+    public Answer create(Article article, String content, SiteUser author) {
         Answer answer = new Answer();
         answer.setContent(content);
         answer.setCreateDate(LocalDateTime.now());
@@ -22,6 +22,7 @@ public class AnswerService {
         answer.setAuthor(author);
 
         this.answerRepository.save(answer);
+        return answer;
     }
     public Answer getAnswer(Integer id){
         Optional<Answer> answer = this.answerRepository.findById(id);
@@ -36,5 +37,13 @@ public class AnswerService {
         answer.setModifyDate(LocalDateTime.now());
         this.answerRepository.save(answer);
     }
+    public void delete(Integer id){
 
+        this.answerRepository.deleteById(id);
+    }
+
+    public void vote(Answer answer, SiteUser siteUser) {
+        answer.getVoter().add(siteUser);
+        this.answerRepository.save(answer);
+    }
 }
