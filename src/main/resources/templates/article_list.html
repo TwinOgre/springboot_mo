@@ -1,6 +1,19 @@
 <html layout:decorate="~{layout}">
 <div layout:fragment="content" class="container">
     <div class="container my-3">
+        <div class="row my-3">
+            <div class="col-6">
+                <a th:href="@{/article/create}" class="btn btn-primary">Article 등록하기</a>
+            </div>
+            <div class="col-6">
+                <form th:action="@{/article/list}" method="get">
+                    <div class="input-group">
+                        <input type="text" name="kw" id="search_kw" class="form-control" th:value="${kw}">
+                        <button class="btn btn-outline-secondary" type="submit" id="btn_search">찾기</button>
+                    </div>
+                </form>
+            </div>
+        </div>
         <table class="table">
             <thead class="table-dark">
             <tr>
@@ -20,7 +33,7 @@
                           th:text="${#lists.size(article.answerList)}">
                     </span>
                 </td>
-                <td >
+                <td>
                     <span th:if="${article.author !=null}" th:text="${article.author.username}"></span>
                 </td>
                 <td th:text="${#temporals.format(article.createDate, 'yyyy-MM-dd HH:mm')}"></td>
@@ -32,7 +45,7 @@
             <ul class="pagination justify-content-center">
                 <li class="page-item" th:classappend="${!paging.hasPrevious} ? 'disabled'">
                     <a class="page-link"
-                       th:href="@{|?page=${paging.number-1}|}">
+                       th:href="@{|?kw=${kw}&page=${paging.number-1}|}">
                         <span>이전</span>
                     </a>
                 </li>
@@ -40,10 +53,10 @@
                     th:if="${page >= paging.number-5 and page <= paging.number+5}"
                     th:classappend="${page == paging.number} ? 'active'"
                     class="page-item">
-                    <a th:text="${page}" class="page-link" th:href="@{|?page=${page}|}"></a>
+                    <a th:text="${page}" class="page-link" th:href="@{|?kw=${kw}&page=${page}|}"></a>
                 </li>
                 <li class="page-item" th:classappend="${!paging.hasNext} ? 'disabled'">
-                    <a class="page-link" th:href="@{|?page=${paging.number+1}|}">
+                    <a class="page-link" th:href="@{|?kw=${kw}&page=${paging.number+1}|}">
                         <span>다음</span>
                     </a>
                 </li>
@@ -51,6 +64,6 @@
         </div>
         <!-- 페이징처리 끝 -->
     </div>
-    <a href="/article/create" type="button">Article 등록하기</a>
+    <!--    <a href="/article/create" type="button">Article 등록하기</a>-->
 </div>
 </html>
