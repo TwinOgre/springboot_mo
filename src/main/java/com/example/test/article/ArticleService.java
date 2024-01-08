@@ -48,8 +48,8 @@ public class ArticleService {
         List<Sort.Order> sorts = new ArrayList<>();
         sorts.add(Sort.Order.desc("createDate"));
         Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
-        Specification<Article> spec = search(kw);
-        return this.articleRepsoitory.findAll(spec, pageable);
+//        Specification<Article> spec = search(kw);
+        return this.articleRepsoitory.findAllByKeyword(kw,pageable);
     }
 
     public void modify(Article article, String subject, String content){
